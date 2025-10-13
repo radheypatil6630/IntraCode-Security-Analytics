@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from './Hero'
 import Navbar from './Navbar'
 import logo from '../assets/logo_icon.png'
+import extension from '../assets/VS Code.png'
 
 const Home = () => {
   return (
@@ -41,6 +42,16 @@ const Home = () => {
             <p className='text-center text-gray-300'>Install the IntraCode browser extension from the Chrome Web Store. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam labore, optio molestiae provident maxime iste magni corrupti fugit </p>
           </div>
         </div>
+      </div>
+
+      <div className='m-10 p-10 px-40 items-center justify-center flex flex-col text-center space-y-6 bg-blue-950 text-white w-[80%] mx-auto rounded-2xl '>
+        <button className='py-2 px-4 bg-gray-700 rounded-xl'>Get Now 🐦‍🔥</button>
+        <p className='text-7xl font-semibold'>Download IntraCode Extension Today !</p>
+        <p>Get Instant access to secure your project and enhanced privacy features by downloading the extension.</p>
+        <span className='p-2  bg-blue-700 rounded-xl flex gap-2 items-center justify-center cursor-pointer hover:scale-105 transition'>
+          <p>Download Extension</p>
+          <img src={extension} alt="VS Code" className='h-10 w-auto'/>
+        </span>
       </div>
     </div>
   )
