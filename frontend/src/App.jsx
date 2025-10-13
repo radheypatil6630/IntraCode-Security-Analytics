@@ -5,6 +5,10 @@ import Navbar from './components/Navbar'
 import Sidebar from './components/UI/Sidebar'
 import DashBoard from './components/Dashboard'
 import SBOMDashboard from './components/SBOMDashboard'
+import Footer from './components/Footer'
+import SignUp from './components/SignUp'
+import Login from './components/Login'
+import Forgot_password from './components/Forgot_password'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 
@@ -14,9 +18,10 @@ function App() {
       {
         path: '/',
         
-        element:  <div>
+        element:  <div className="min-h-screen flex flex-col">
           <Navbar/>
            <Home />
+           <Footer />
         </div>,
       },{
         path: '/sidebar',
@@ -26,6 +31,25 @@ function App() {
           { path: 'dashboard', element: <DashBoard /> },
           { path: 'sbom-dashboard', element: <SBOMDashboard /> },
         ],
+      },{
+        path: '/signup',
+        element: <div className="min-h-screen flex flex-col">
+          
+           <SignUp />
+           <Footer />
+        </div>,
+      },{
+        path: '/login',
+        element: <div className="min-h-screen flex flex-col">
+          <Login />
+          <Footer />
+        </div>,
+      },{
+        path: '/forgot-password',
+        element: <div className="min-h-screen flex flex-col">
+          <Forgot_password />
+          <Footer />
+        </div>,
       }
     ]
   )

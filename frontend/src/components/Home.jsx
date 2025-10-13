@@ -3,6 +3,7 @@ import Hero from './Hero'
 import Navbar from './Navbar'
 import logo from '../assets/logo_icon.png'
 import extension from '../assets/VS Code.png'
+import Footer from './Footer'
 
 const Home = () => {
   return (
@@ -53,6 +54,8 @@ const Home = () => {
           <img src={extension} alt="VS Code" className='h-10 w-auto'/>
         </span>
       </div>
+
+      
     </div>
   )
 }
