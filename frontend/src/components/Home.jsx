@@ -45,16 +45,41 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='m-10 p-10 px-40 items-center justify-center flex flex-col text-center space-y-6 bg-blue-950 text-white w-[80%] mx-auto rounded-2xl '>
+      <div
+      id="extension-section"
+      className='m-10 p-10 px-40 items-center justify-center flex flex-col text-center space-y-6 bg-blue-950 text-white w-[80%] mx-auto rounded-2xl '>
         <button className='py-2 px-4 bg-gray-700 rounded-xl'>Get Now 🐦‍🔥</button>
         <p className='text-7xl font-semibold'>Download IntraCode Extension Today !</p>
         <p>Get Instant access to secure your project and enhanced privacy features by downloading the extension.</p>
-        <span className='p-2  bg-blue-700 rounded-xl flex gap-2 items-center justify-center cursor-pointer hover:scale-105 transition'>
+        <span className='mt-8 py-3 px-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl text-white font-semibold text-lg hover:scale-105 transition flex gap-2 items-center justify-center cursor-pointer'>
           <p>Download Extension</p>
           <img src={extension} alt="VS Code" className='h-10 w-auto'/>
         </span>
       </div>
 
+
+ <div className='m-10 p-10 items-center justify-center flex flex-col text-center space-y-6 bg-slate-900/50 text-white w-[80%] mx-auto rounded-2xl backdrop-blur-sm'>
+        <h3 className='text-5xl font-bold'>VS Code Extension Features</h3>
+        <div className='grid md:grid-cols-2 gap-8 mt-8'>
+          <div className='p-6 bg-blue-900/30 rounded-xl'>
+            <h4 className='text-2xl font-semibold mb-4'>Real-time SBOM Analysis</h4>
+            <p className='text-gray-300'>Automatically scan your project dependencies and generate Software Bill of Materials in real-time as you code.</p>
+          </div>
+          <div className='p-6 bg-blue-900/30 rounded-xl'>
+            <h4 className='text-2xl font-semibold mb-4'>Security Vulnerability Detection</h4>
+            <p className='text-gray-300'>Get instant alerts about security vulnerabilities in your dependencies with detailed remediation suggestions.</p>
+          </div>
+          <div className='p-6 bg-blue-900/30 rounded-xl'>
+            <h4 className='text-2xl font-semibold mb-4'>License Compliance</h4>
+            <p className='text-gray-300'>Ensure your project meets all licensing requirements with automated license compatibility checks.</p>
+          </div>
+          <div className='p-6 bg-blue-900/30 rounded-xl'>
+            <h4 className='text-2xl font-semibold mb-4'>Dashboard Integration</h4>
+            <p className='text-gray-300'>Seamlessly sync with your IntraCode dashboard for centralized security management across all projects.</p>
+          </div>
+        </div>
+       
+      </div>
       
     </div>
   )

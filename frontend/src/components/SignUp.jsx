@@ -72,7 +72,7 @@ const SignUp = () => {
 
 
   <p className="text-white font-istok text-[20px] text-center ">
-    Already have an account? <Link to="/login" className="inline  cursor-pointer hover:underline hover:text-blue-400">Login</Link>
+    Already have an account? <Link to="/login" className="inline text-blue-400 cursor-pointer hover:underline ">Login</Link>
   </p>
 </div>
 </div>

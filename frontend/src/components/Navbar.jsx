@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-scroll'
 import logo from '../assets/IC Logo.png'
 
 const Navbar = () => {
@@ -29,7 +29,10 @@ const Navbar = () => {
     {/* Right side buttons */}
     <div className="flex gap-4 ">
       <Link
-        to="/signup"
+        to="extension-section"      
+        smooth={true}              
+        duration={800}              
+        offset={-70}  
         className="bg-[linear-gradient(90deg,#215dd4_30%,#ce21d4_80%)]  shadow-sm shadow-[#0fbcff]/40 
                   hover:shadow-md 
                   rounded-xl py-2 px-6 text-lg font-semibold text-white transition"

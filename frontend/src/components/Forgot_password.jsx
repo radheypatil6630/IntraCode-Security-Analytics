@@ -3,6 +3,8 @@ import Lock_Image from '../assets/Lock Image.png'
 import logo from '../assets/IC Logo.png'
 import { Link } from 'react-router-dom';
 import forgot_image from '../assets/sign.png'
+import forgot_animation from '../anim/Forgot Password (1).json'
+import Lottie from "lottie-react";
 
 const Forgot_password = () => {
 
@@ -15,14 +17,16 @@ const Forgot_password = () => {
           <div className="relative flex items-center justify-center w-full  ">
             
             
-            <img src ={Lock_Image}
-              className="absolute left-22 top-16 w-[705px] h-[702px] bg-cover bg-center"
-             
-            />
+               <Lottie 
+                   animationData={forgot_animation} 
+                   loop={true} 
+                   autoplay={true} 
+                                className="absolute left-22 top-26 w-[655px] h-[650px] bg-cover bg-center"
+                         />
       
            
             <div className="absolute left-[965px] top-[20px] w-[220px] h-[220px] rounded-full bg-gradient-to-b from-[#2FA4DD] to-[#721CC2]" />
-            <div className="absolute left-[1500px] top-[608px] w-[170px] h-[170px] rounded-full bg-gradient-to-b from-[#2FA4DD] to-[#721CC2]" />
+            <div className="absolute left-[1490px] top-[638px] w-[170px] h-[170px] rounded-full bg-gradient-to-b from-[#2FA4DD] to-[#721CC2]" />
       
            
            <div className="absolute left-[1065px] top-[100px] w-[520px] rounded-[20px] bg-gradient-to-tl from-[rgba(191,191,191,0.31)] to-transparent bg-black/20 shadow-[-8px_4px_5px_0_rgba(0,0,0,0.24)] backdrop-blur-[53px] border border-transparent p-8 flex flex-col gap-6 ">
@@ -53,8 +57,8 @@ const Forgot_password = () => {
   </button>
 
 
-  <Link to="/forgot-password" className=" text-white font-istok text-[18px] text-center  py-2 px-2 hover:cursor-pointer  hover:text-blue-500 font-medium">
-    back to Login
+  <Link to="/login" className=" text-white font-istok text-[18px] text-center  py-2 px-2 hover:cursor-pointer  hover:text-blue-500 font-medium">
+    Back to Login
   </Link> 
 
 
