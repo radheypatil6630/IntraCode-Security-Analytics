@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-scroll'
+import { Link as ScrollLink } from 'react-scroll'
+import { Link as RouterLink } from 'react-router-dom'
 import logo from '../assets/IC Logo.png'
 
 const Navbar = () => {
@@ -15,38 +16,39 @@ const Navbar = () => {
    
     <div className="hidden md:flex gap-8">
         
-      <Link to="/" className="rounded-4xl px-4 py-2 hover:bg-[#040916] hover:border hover:border-gray-500 transition">
+      <RouterLink to="/" className="rounded-4xl px-4 py-2 hover:bg-[#040916] hover:border hover:border-gray-500 transition">
         Home
-      </Link>
-      <Link to="/" className="rounded-4xl px-4 py-2 hover:bg-[#040916] hover:border hover:border-gray-500 transition">
+      </RouterLink>
+      <RouterLink to="/" className="rounded-4xl px-4 py-2 hover:bg-[#040916] hover:border hover:border-gray-500 transition">
         Documentation
-      </Link>
-      <Link to="/" className="rounded-4xl px-4 py-2 hover:bg-[#040916] hover:border hover:border-gray-500 transition">
+      </RouterLink>
+      <RouterLink to="/" className="rounded-4xl px-4 py-2 hover:bg-[#040916] hover:border hover:border-gray-500 transition">
         About Us
-      </Link>
+      </RouterLink>
     </div>
 
     {/* Right side buttons */}
     <div className="flex gap-4 ">
-      <Link
+      <ScrollLink
         to="extension-section"      
         smooth={true}              
         duration={800}              
         offset={-70}  
         className="bg-[linear-gradient(90deg,#215dd4_30%,#ce21d4_80%)]  shadow-sm shadow-[#0fbcff]/40 
                   hover:shadow-md 
-                  rounded-xl py-2 px-6 text-lg font-semibold text-white transition"
+                  rounded-xl py-2 px-6 text-lg font-semibold text-white transition cursor-pointer"
       >
         Extension
-      </Link>
-      <Link
+      </ScrollLink>
+      
+      <RouterLink
         to="/login"
         className="bg-[#02040a] border border-[#0fbcff] shadow-sm shadow-[#0fbcff]/40 
                   hover:shadow-md hover:border-[#0fbcff] 
-                  rounded-xl py-2 px-6 text-lg font-semibold text-white transition"
+                  rounded-xl py-2 px-6 text-lg font-semibold text-white transition cursor-pointer"
       >
         Login
-      </Link>
+      </RouterLink>
       
     </div>
   </div>
