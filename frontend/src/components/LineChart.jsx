@@ -1,13 +1,14 @@
 import React from 'react'
 import 'chart.js/auto';
-import { Pie } from "react-chartjs-2";
-const PieChart = ({ chartData }) => {
+import { Line } from "react-chartjs-2";
+const LineChart = ({ chartData }) => {
     
-return (
-    <div className='h-full w-full '>
-        <h2 className='text-center text-white'>Pie Chart</h2>
-        <Pie
-            data={chartData}
+  return (
+    <div>
+       <div className="chart-container">
+      <h2 className='text-center text-white'>Line Graph</h2>
+      <Line
+        data={chartData}
             options={{
               plugins: {
   title: {
@@ -104,9 +105,10 @@ return (
 }
 
             }}
-        />
+      />
     </div>
-)
+    </div>
+  )
 }
 
-export default PieChart
+export default LineChart

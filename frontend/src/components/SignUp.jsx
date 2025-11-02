@@ -3,9 +3,57 @@ import Lock_Image from '../assets/Lock Image.png'
 import logo from '../assets/IC Logo.png'
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react";
+import axios from "axios";
 import sign_up_animation from '../anim/sign_up.json'
 
 const SignUp = () => {
+
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [error, setError] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    // Proceed with signup logic (e.g., API call)
+    console.log("Signing up with", username, password);
+    setError('');
+
+    if (username.trim() === '' || password.trim() === '') {
+      setError('fill all fields please');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
+    formData.append("confirm_password", confirmPassword);
+
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/register",
+        formData,
+        // {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        // }
+      );
+
+      console.log(response.data);
+      alert(response.data.message);
+    } catch (error) {
+      console.error(error);
+      alert(error.response?.data?.message || "Upload failed!");
+    }
+  }
 
   return (
     <div className='min-h-screen bg-[linear-gradient(155deg,#02040a_30%,#162a86_80%)] p-4'>
@@ -43,31 +91,38 @@ const SignUp = () => {
 
           <div className="flex flex-col gap-3 mt-2">
             <input
-              aria-label="Enter Name"
-              placeholder="Enter Name"
+              aria-label="Enter Username"
+              placeholder="Enter Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="py-[14px] px-4 rounded-[12px] border border-white/80 bg-transparent text-white font-istok text-[20px] outline-none placeholder:text-white/70 hover:border-blue-400 hover:shadow-sm shadow-blue-500"
             />
-            <input
+            {/* <input
               aria-label="Email"
               placeholder="Enter Email"
               className="py-[14px] px-4 rounded-[12px] border border-white/80 bg-transparent text-white font-istok text-[20px] outline-none placeholder:text-white/70 hover:border-blue-400 hover:shadow-sm shadow-blue-500"
-            />
+            /> */}
             <input
               type="password"
               aria-label="Password"
               placeholder="Enter Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="py-[14px] px-4 rounded-[12px] border border-white/80 bg-transparent text-white font-istok text-[20px] outline-none placeholder:text-white/70 hover:border-blue-400 hover:shadow-sm shadow-blue-500"
             />
             <input
               type="password"
               aria-label="Confirm Password"
               placeholder="Enter Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               className="py-[14px] px-4 rounded-[12px] border border-white/80 bg-transparent text-white font-istok text-[20px] outline-none placeholder:text-white/70 hover:border-blue-400 hover:shadow-sm shadow-blue-500"
             />
           </div>
 
 
-          <button className="mt-4 py-[14px] px-[14px] rounded-[12px] bg-gradient-to-tr from-[#628EFF] via-[#8740CD] to-[#580475] text-white font-istok font-bold text-[20px] border-none cursor-pointer">
+          <button className="mt-4 py-[14px] px-[14px] rounded-[12px] bg-gradient-to-tr from-[#628EFF] via-[#8740CD] to-[#580475] text-white font-istok font-bold text-[20px] border-none cursor-pointer"
+            onClick={handleSubmit}>
             Signup
           </button>
 

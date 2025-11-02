@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from 'axios';
+import { useState } from 'react';
 import Lock_Image from '../assets/Lock Image.png'
 import logo from '../assets/IC Logo.png'
 import { Link } from 'react-router-dom';
@@ -6,6 +8,39 @@ import Lottie from "lottie-react";
 import login_animation from '../anim/Login.json'
 
 const Login = () => {
+
+  const [username,setUsername] = useState('');
+  const [password,setPassword] = useState('');
+  const [remember,setRemember] = useState('')
+
+const handleLogin = async () => {
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("password", password);
+  formData.append("remember", remember ? "on" : "");
+
+  try {
+    const response = await axios.post("http://localhost:5000/login", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+      withCredentials: true,
+      validateStatus: () => true, // prevents redirect error
+    });
+
+    if (response.data.success) {
+      alert("Login successful!");
+      console.log("User ID:", response.data.user_id);
+      window.location.href = `http://localhost:5173/sidebar?user_id=${response.data.user_id}`;
+    } else {
+      alert(response.data.message || "Invalid credentials");
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+    alert("Error connecting to the server. Please try again.");
+  }
+};
+
+
+
 
         return (
           <div className='min-h-screen bg-[linear-gradient(155deg,#02040a_30%,#162a86_80%)] p-4'>
@@ -45,19 +80,41 @@ const Login = () => {
     <input
       aria-label="Email"
       placeholder="Enter Email "
+      value={username}
+      onChange={(e)=>{setUsername(e.target.value)}}
       className="py-[18px] px-4 rounded-[12px] border border-white/80 bg-transparent text-white font-istok text-[20px] outline-none placeholder:text-white/70 hover:border-blue-400 hover:shadow-sm shadow-blue-500"
     />
     <input
       type="password"
       aria-label="Password"
       placeholder="Enter Password"
+      value={password}
+      onChange={(e)=>
+      {
+        setPassword(e.target.value)
+      }
+      }
       className="py-[18px] px-4 rounded-[12px] border border-white/80 bg-transparent text-white font-istok text-[20px] outline-none placeholder:text-white/70 hover:border-blue-400 hover:shadow-sm shadow-blue-500"
     />
-   
+ <div className='flex items-center gap-2'>
+  <input
+    type='checkbox'
+    id='remember'
+    checked={remember}
+    onChange={(e) => setRemember(e.target.checked)}
+    className='w-4 h-4 accent-blue-600'
+  />
+  <label htmlFor='remember' className='text-gray-400'>
+    Remember me
+  </label>
+</div>
+
+    
   </div>
 
 
-  <button className="mt-4 py-[18px] px-[18px] rounded-[12px] bg-gradient-to-tr from-[#628EFF] via-[#8740CD] to-[#580475] text-white font-istok font-bold text-[20px] border-none cursor-pointer">
+  <button className="mt-4 py-[18px] px-[18px] rounded-[12px] bg-gradient-to-tr from-[#628EFF] via-[#8740CD] to-[#580475] text-white font-istok font-bold text-[20px] border-none cursor-pointer"
+  onClick={handleLogin}>
     Login
   </button>
 

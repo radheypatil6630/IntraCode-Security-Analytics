@@ -1,15 +1,16 @@
 import React from 'react'
 import 'chart.js/auto';
-import { Pie } from "react-chartjs-2";
-const PieChart = ({ chartData }) => {
+import { Bar  } from "react-chartjs-2";
+const ColumnChart = ({ chartData }) => {
     
-return (
-    <div className='h-full w-full '>
-        <h2 className='text-center text-white'>Pie Chart</h2>
-        <Pie
-            data={chartData}
+  return (
+   
+       <div className="chart-container">
+      <h2 className='text-center text-white'>Column Chart</h2>
+      <Bar 
+         data={chartData}
             options={{
-              plugins: {
+               plugins: {
   title: {
     display: true,
     text: "Users Gained between 2016-2020",
@@ -64,49 +65,57 @@ return (
     }
   },
   scales: {
-    x: {
-      title: {
-        display: true,
-        text: "Year", // X-axis label
-        color: "#00eaff",
-        font: {
-          size: 16,
-          weight: "600",
-          family: "Poppins, sans-serif"
-        }
-      },
-      ticks: {
-        color: "#ffffff"
-      },
-      grid: {
-        color: "rgba(255,255,255,0.1)"
+  x: {
+    title: {
+      display: true,
+      text: "Year",
+      color: "#ffffff",
+      font: {
+        size: 16,
+        weight: "600",
+        family: "Poppins, sans-serif"
       }
     },
-    y: {
-      title: {
-        display: true,
-        text: "Users Gained", // Y-axis label
-        color: "#00eaff",
-        font: {
-          size: 16,
-          weight: "600",
-          family: "Poppins, sans-serif"
-        }
-      },
-      ticks: {
-        color: "#ffffff"
-      },
-      grid: {
-        color: "rgba(255,255,255,0.1)"
+    ticks: {
+      color: "#ffffff"  // color for tick labels (2016, 2017...)
+    },
+    grid: {
+      color: "rgba(255,255,255,0.1)" // light gridlines
+    },
+    border: {
+      color: "#ffffff" // 👈 sets the X-axis line color
+    }
+  },
+  y: {
+    title: {
+      display: true,
+      text: "Users Gained",
+      color: "#ffffff",
+      font: {
+        size: 16,
+        weight: "600",
+        family: "Poppins, sans-serif"
       }
+    },
+    ticks: {
+      color: "#ffffff"  // color for Y tick values (0, 20000...)
+    },
+    grid: {
+      color: "rgba(255,255,255,0.1)"
+    },
+    border: {
+      color: "#ffffff" // 👈 sets the Y-axis line color
     }
   }
 }
 
-            }}
-        />
-    </div>
-)
 }
 
-export default PieChart
+            }}
+      />
+    </div>
+
+  )
+}
+
+export default ColumnChart

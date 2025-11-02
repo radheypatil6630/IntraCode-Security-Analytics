@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -16,7 +17,28 @@ import {Outlet, useNavigate } from "react-router-dom";
 
 
 export default function Sidebar() {
-  
+ 
+  const handleLogout = async () => {
+  try {
+    console.log("Logout clicked");
+
+    const response = await axios.get("http://localhost:5000/logout", {
+      withCredentials: true,
+    });
+
+    if (response.data.success) {
+      alert("Logout successful ✅");
+      // Redirect to login page after logout
+      window.location.href = "/login";
+    } else {
+      alert("Logout failed ❌");
+    }
+  } catch (error) {
+    console.error("Logout error:", error);
+    alert("Error during logout ❌");
+  }
+};
+
   
 
   const navigate = useNavigate();
@@ -38,13 +60,12 @@ export default function Sidebar() {
       ),
     },
   
-    {
-      label: "Logout",
-      href: "/",
-      icon: (
-        <IconArrowLeft className="h-5 w-5 text-white dark:text-neutral-200" />
-      ),
-    },
+     {
+    label: "Logout",
+    href: "#", 
+    icon: <IconArrowLeft className="h-5 w-5 text-white dark:text-neutral-200" />,
+    onClick: handleLogout, 
+  },
   ];
 
 const handleNavigateClick = (href) => {
@@ -91,8 +112,10 @@ const handleNavigateClick = (href) => {
     if (link.href && link.href !== "#") {
       setContent(null);
       handleNavigateClick(link.href);
+    }else if (link.onClick) {
+      link.onClick(); // e.g. Logout
     } else {
-      fetchContent(link.href);
+          fetchContent(link.href);
     }
   };
 
@@ -185,7 +208,7 @@ const handleNavigateClick = (href) => {
       </motion.div>
 
       {/* Main content area (pt-20 to clear fixed mobile header) */}
-      <div className="flex flex-1 p-4 md:p-6 overflow-auto bg-[linear-gradient(155deg,#02040a_3%,#162a86_80%)] pt-20 md:pt-6">
+      <div className="flex flex-1 p-4 md:p-6 overflow-auto bg-[#041340] pt-20 md:pt-6">
         <div className="w-full h-full rounded-md">
           {loading ? (
             <div className="text-white p-6">Loading...</div>
