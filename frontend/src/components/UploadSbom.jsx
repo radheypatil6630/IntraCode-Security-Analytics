@@ -50,7 +50,7 @@ function UploadSbom() {
       <select
         value={uploadType}
         onChange={(e) => setUploadType(e.target.value)}
-        className="border p-2"
+        className="border p-2 bg-gray-200 text-black"
       >
         <option value="zip_project">ZIP Project</option>
         <option value="dependency_file">Dependency File</option>
